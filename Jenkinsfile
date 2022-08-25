@@ -9,9 +9,9 @@ pipeline {
         stage("sonar quality check"){
             steps {
                 script {
-                    withSonarQubeEnv(credentialsId: '2f18007b-d594-42e6-bd9a-e096d8ff72f5') {
+                    withSonarQubeEnv(credentialsId: '57fa8461-ade0-47b6-ae6e-935b770d8ad9') {
                         sh "mvn sonar:sonar"
-                }
+                  }
                     timeout(time: 1, unit: 'HOURS') {
                         def qg = waitForQualityGate()
                       if (qg.status != 'OK')
@@ -25,4 +25,3 @@ pipeline {
         }
     }
 }
-
