@@ -8,7 +8,8 @@ pipeline {
     stages{
         stage("sonar quality check"){
             steps {
-                withSonarQubeEnv('sonar-server') {
+                script {
+                    withSonarQubeEnv('sonar-server') {
                     sh "mvn sonar:sonar"
                }
                 timeout(time: 1, unit: 'HOURS') {
@@ -23,3 +24,4 @@ pipeline {
             }
         }
     }
+}
